@@ -1,6 +1,6 @@
 {
   "name": "rethinkdb-insuretable",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A helper method to insure RethinkDB table exists",
   "keywords": [
     "rethinkdb",
