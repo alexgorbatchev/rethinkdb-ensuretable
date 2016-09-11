@@ -1,11 +1,11 @@
 import { expect } from "chai";
 import * as r from "rethinkdb";
-import insureTable from "../src";
+import ensureTable from "../src";
 
-const DB = "rethinkdb_insuretable_test_db";
+const DB = "rethinkdb_ensuretable_test_db";
 const TABLE = "table";
 
-describe("rethinkdb-insuretable", () => {
+describe("rethinkdb-ensuretable", () => {
   let connection: r.Connection;
 
   before(() =>
@@ -18,11 +18,11 @@ describe("rethinkdb-insuretable", () => {
     r.db(DB).tableList().run(connection).then((tables: string[]) => expect(tables.indexOf(TABLE)).to.equal(-1))
   );
 
-  it("creates table", () => insureTable(connection, DB, TABLE));
+  it("creates table", () => ensureTable(connection, DB, TABLE));
 
   it("has the table", () =>
     r.db(DB).tableList().run(connection).then((tables: string[]) => expect(tables.indexOf(TABLE)).to.not.equal(-1))
   );
 
-  it("returns table", () => insureTable(connection, DB, TABLE).then(table => expect(table).to.be.ok));
+  it("returns table", () => ensureTable(connection, DB, TABLE).then(table => expect(table).to.be.ok));
 });
